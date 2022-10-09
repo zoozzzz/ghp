@@ -23,15 +23,15 @@ jobs:
           yarn
           yarn build
       - name: Deploy
-      - uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # Github 会在 workflow 中自动生成 GIHUBT_TOKEN，用于认证 workflow 的运行
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # 静态资源目录设置
           publish_dir: ./build
-          # 默认发布到 gh-pages 分支上，可以指定特定的发布分支（不能选拉取代码的分支）
-          # publish_branch: gh-pages
-          full_commit_message: ${{ github.event.head_commit.message }}
+          # cname: kaiyuanshe.cn
+          # external_repository: ${{ secrets.GIT_URI }}
+          # publish_branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          # force_orphan: true
     # - name: Push To Pages
     #   working-directory: ./build # 指定下面指令运行的目录
     #   run: |
