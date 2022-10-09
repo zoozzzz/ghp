@@ -18,9 +18,9 @@ jobs:
       - uses: actions/setup-node@v2 # 这里是设置 node 版本
         with: # 这里相当于传递给上面指令的参数，告诉他使用 node@12.13.1 这个版本
           node-version: '16.10.0'
-      - name: 安装依赖 # name 定义步骤的名称，这个可以在该 Action 运行起来之后，在 Github Actions Tab 下看到
-        run: | # `run: |` 的方式，允许我们一次定义多个要执行的命令
-          yarn install
+      # - name: 安装依赖 # name 定义步骤的名称，这个可以在该 Action 运行起来之后，在 Github Actions Tab 下看到
+        # run: | # `run: |` 的方式，允许我们一次定义多个要执行的命令
+          # yarn install
       - name: Push To Pages
         working-directory: ./dist # 指定下面指令运行的目录
         run: |
