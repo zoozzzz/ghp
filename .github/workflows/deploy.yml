@@ -1,15 +1,3 @@
-/*
- * Description: 
- * Created: 2022-10-09 15:08:16
- * Author : Wing
- * Email : cairz@mogulinker.com
- * -----
- * Last Modified: 2022-10-09 15:08:16
- * Modified By: Wing
- * -----
- * Copyright (c) 2022 www.mogulinker.com
- */
-
 name: Deploy
 
 # on 定义的是执行该 Action 的时机，这里的配置是指：
