@@ -13,22 +13,23 @@ jobs:
   build:
     runs-on: ubuntu-latest # 运行在 ubuntu 系统环境下
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16.10.0'
-    - name: Install dependencies
-      run: yarn
-      run: yarn build
-    - name: Push To Pages
-      working-directory: ./dist # 指定下面指令运行的目录
-      run: |
-        git init
-        git checkout -b main
-        git add -A
-      # 这里把下面所有 `<YOUR_NAME>/<YOUR_EMAIL>/<COMMIT_MSG>/<YOUR_TOKEN>` 替换成你自己的就可以了
-        git -c user.name='zoozzzz' -c user.email='zooz_cai@163.com' commit -m 'feat:config'
-      # 这里需要一个 共开仓库 的 secrets 配置，这里的 secrets 是一个环境变量，可以直接拿过来直接用
-        git remote add origin https://${{secrets.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}}@github.com/zoozzzz/blog.git
-        git push origin main -f -q
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.10.0"
+      - name: Install dependencies
+        run: |
+          yarn
+          yarn build
+    # - name: Push To Pages
+    #   working-directory: ./dist # 指定下面指令运行的目录
+    #   run: |
+    #     git init
+    #     git checkout -b main
+    #     git add -A
+    #   # 这里把下面所有 `<YOUR_NAME>/<YOUR_EMAIL>/<COMMIT_MSG>/<YOUR_TOKEN>` 替换成你自己的就可以了
+    #     git -c user.name='zoozzzz' -c user.email='zooz_cai@163.com' commit -m 'feat:config'
+    #   # 这里需要一个 共开仓库 的 secrets 配置，这里的 secrets 是一个环境变量，可以直接拿过来直接用
+    #     git remote add origin https://${{secrets.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}}@github.com/zoozzzz/blog.git
+    #     git push origin main -f -q
