@@ -21,7 +21,6 @@ jobs:
       - name: 安装依赖 # name 定义步骤的名称，这个可以在该 Action 运行起来之后，在 Github Actions Tab 下看到
         run: | # `run: |` 的方式，允许我们一次定义多个要执行的命令
           yarn install
-        # yarn run build
       - name: Push To Pages
         working-directory: ./dist # 指定下面指令运行的目录
         run: |
