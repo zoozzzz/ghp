@@ -22,24 +22,10 @@ jobs:
         run: |
           yarn
           yarn build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: ./build
-          cname: zoozzzz
-          external_repository: ${{ secrets.GIT_URI }}
-          # publish_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          # force_orphan: true
-    # - name: Push To Pages
-    #   working-directory: ./build # 指定下面指令运行的目录
-    #   run: |
-    #     git init
-    #     git checkout -b main
-    #     git add -A
-    #   # 这里把下面所有 `<YOUR_NAME>/<YOUR_EMAIL>/<COMMIT_MSG>/<YOUR_TOKEN>` 替换成你自己的就可以了
-    #     git -c user.name='zoozzzz' -c user.email='zooz_cai@163.com' commit -m 'feat:config'
-    #   # 这里需要一个 共开仓库 的 secrets 配置，这里的 secrets 是一个环境变量，可以直接拿过来直接用
-    #     git remote add origin https://${{secrets.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}}@github.com/zoozzzz/blog.git
-    #     git push origin main -f -q
+      - name: Build and deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_REPOSITORY: ghp
