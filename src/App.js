@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import ReactMarkdown from 'react-markdown';
+import md from './md/test.md';
 
 function App() {
+  const [markdown, setMarkdown] = useState('');
+  useEffect(() => {
+    fetch(md)
+      .then(res => res.text())
+      .then(text => setMarkdown(text));
+
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React test test test
-        </a>
-      </header>
+     <ReactMarkdown children={markdown} />
     </div>
   );
 }
