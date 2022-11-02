@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "cross-env react-app-rewired start",
-    "build": "cross-env react-app-rewired build",
+    "build": "cross-env node build_md && react-app-rewired build",
     "test": "cross-env react-app-rewired test",
     "eject": "cross-env react-scripts eject",
     "predeploy": "yarn run build",

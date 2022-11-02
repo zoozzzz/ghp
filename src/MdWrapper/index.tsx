@@ -9,19 +9,25 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // `rehype-katex` does not import the CSS for you
 import md from "../md/test.md";
+import mdArr from "../md/index.ts";
 import getMdData from "../utils/getMdData.ts";
 import styles from "./index.module.less";
+console.log(mdArr);
 
 function MdWrapper() {
-  const [markdown, setMarkdown] = useState("");
-  const getData = async () => {
-    const data = await getMdData(md);
-    console.log(data);
+  const [markdown, setMarkdown] = useState('');
+  const getData = async (path: string) => {
+    const data = await getMdData(path)
     setMarkdown(data);
   };
   useEffect(() => {
-    getData();
+    if(!mdArr || !mdArr.length) return;
+    getData(mdArr[0].path);
   }, []);
+
+  const onSelect = (md: { path: string; name: string }) => {
+    getData(md.path);
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.list}>
@@ -29,8 +35,10 @@ function MdWrapper() {
           header={<div>Header</div>}
           footer={<div>Footer</div>}
           bordered
-          dataSource={["aaa", "bbb", "ccc"]}
-          renderItem={(item) => <List.Item>{item}</List.Item>}
+          dataSource={mdArr}
+          renderItem={(item: { path: string; name: string }) => (
+            <List.Item><div className={styles.mdItem} onClick={() => onSelect(item)}>{item.name || ""}</div></List.Item>
+          )}
         />
       </div>
       <div className={styles.mdWrapper}>
@@ -44,7 +52,7 @@ function MdWrapper() {
                   // style={dark}
                   language={match[1]}
                   PreTag="div"
-                  {...props as any}
+                  {...(props as any)}
                 />
               ) : (
                 <code className={className} {...props}>
