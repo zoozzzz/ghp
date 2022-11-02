@@ -66,7 +66,7 @@ fs.readdir("./src/md/", function (err, files) {
       // 把md文件导入到index.ts
     });
 
-    indexData += `export default [\n${fileNameStr}\n]`;
+    indexData += `const md_data = [\n${fileNameStr}\n];\nexport default md_data;`;
     console.log(indexData);
     // const indexPath = path.join(__dirname, "/src/md/index.ts");
     fs.writeFile(path.join(__dirname, "/src/md/index.ts"), indexData, (err) => {
