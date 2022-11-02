@@ -8,11 +8,9 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; // `rehype-katex` does not import the CSS for you
-import md from "../md/test.md";
 import mdArr from "../md/index.ts";
 import getMdData from "../utils/getMdData.ts";
 import styles from "./index.module.less";
-console.log(mdArr);
 
 function MdWrapper() {
   const [markdown, setMarkdown] = useState('');
