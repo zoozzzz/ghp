@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import { useEffect, useState } from "react";
-import { List } from "antd";
+import { List, Tooltip } from "antd";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -30,12 +30,15 @@ function MdWrapper() {
     <div className={styles.wrapper}>
       <div className={styles.list}>
         <List
-          header={<div>Header</div>}
-          footer={<div>Footer</div>}
+          header={<div className={styles.listHeader}>文档列表</div>}
           bordered
           dataSource={mdArr}
           renderItem={(item: { path: string; name: string }) => (
-            <List.Item><div className={styles.mdItem} onClick={() => onSelect(item)}>{item.name || ""}</div></List.Item>
+            <List.Item>
+              <Tooltip title={item.name}>
+                <div className={styles.mdItem} onClick={() => onSelect(item)}>{item.name || ""}</div>
+              </Tooltip>
+            </List.Item>
           )}
         />
       </div>

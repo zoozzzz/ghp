@@ -19,13 +19,42 @@
     width: 300px;
     padding: 24px;
 
+    :global{
+      .automan-list{
+        height: 100%;
+
+        .automan-spin-nested-loading{
+          height: calc(100% - 54px);
+
+          .automan-spin-container{
+            height: 100%;
+            overflow: auto;
+          }
+        }
+      }
+    }
+
+    .listHeader{
+      font-weight: bold;
+      font-size: 18px;
+      color: var(--automan-primary-color);
+    }
+
     .mdItem{
       width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       cursor: pointer;
+
+      &:hover{
+        background-color: var(--automan-primary-1);
+      }
     }
   }
   .mdWrapper{
     height: 100%;
+    overflow: auto;
     flex: 1;
     padding: 24px;
   }
