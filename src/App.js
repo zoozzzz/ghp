@@ -1,25 +1,22 @@
 // import logo from './logo.svg';
 // import { useEffect, useState } from 'react';
+import { ConfigProvider } from 'antd';
 import './App.css';
 import MdWrapper from '@/MdWrapper/index.tsx';
-// import ReactMarkdown from 'react-markdown';
-// import md from './md/test.md';
-// import getMdData from './utils/getMdData.js';
+import dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn';
+import zhCN from 'antd/locale/zh_CN';
+import 'antd/dist/reset.css';
+
+dayjs.locale('zh-cn');
 
 function App() {
-  // const [markdown, setMarkdown] = useState('');
-  // const getData = async () => {
-  //   const data = await getMdData(md);
-  //   console.log(data);
-  //   setMarkdown(data);
-  // }
-  // useEffect(() => {
-  //   getData();
-  // }, []);
   return (
-    <div>
-     <MdWrapper />
-    </div>
+    <ConfigProvider prefixCls="automan" locale={zhCN}>
+      <div>
+        <MdWrapper />
+      </div>
+    </ConfigProvider>
   );
 }
 

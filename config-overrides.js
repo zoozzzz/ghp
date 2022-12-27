@@ -41,18 +41,10 @@ module.exports = override(
   }),
   addWebpackAlias({
     '@': path.resolve(__dirname, 'src')
-  })
-  // return config
-  // (config, env) => {
-  //   // 配置打包目录输出到 ../dist/public 目录中
-  //   paths.appBuild = path.join(__dirname, '../dist/public');
-  //   config.output.path = paths.appBuild;
-  //   config.output.publicPath = './';
-  //   config.plugins.push(new webpack.DefinePlugin(processDefine));
-
-  //   // NOTE: 解决 create-react-app imports restriction outside of src directory 的限制
-  //   aliasDangerous(configPaths('tsconfig.paths.json'))(config);
-
-  //   return config;
-  // },
+  }),
+  // enableEslintTypescript(),
+  (config, env) => {
+    config.resolve.extensions = ['.ts', '.tsx', '.js','.jsx','.json'];
+    return config;
+  },
 );
