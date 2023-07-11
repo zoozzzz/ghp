@@ -34,7 +34,7 @@ function MdWrapper() {
     <div className={styles.wrapper}>
       <div className={styles.list}>
         <List
-          header={<div className={styles.listHeader}>文档列表</div>}
+          header={<div className={styles.listHeader}>文章列表</div>}
           bordered
           dataSource={mdArr}
           renderItem={(item: { path: string; name: string }) => (
